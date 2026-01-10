@@ -58,6 +58,7 @@ Add `ContextualSDK` to your project via Xcode:
 1. **Import the Framework**
    ```swift
    import ContextualSDK
+   import ContextualIntelligence
    import ContextualUI
    ```
 
