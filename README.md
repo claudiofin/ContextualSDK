@@ -97,6 +97,32 @@ Add `ContextualSDK` to your project via Xcode:
    }
    ```
 
+## Architecture & Extensibility 🏗️
+
+ContextualSDK is designed to be **agnostic**. While we provide `AppleIntelligenceBrain` and `RegexBrain` out of the box, the core architecture is completely open.
+
+### Custom Brains (Bring Your Own AI)
+
+You can easily plug in any other intelligence provider (OpenAI, Gemini, Claude, etc.) by implementing the `ContextualBrain` protocol.
+
+```swift
+import ContextualSDK
+
+struct MyCustomBrain: ContextualBrain {
+    func decide(for context: FieldContext) async throws -> InputDecision {
+        // 1. Call your API (e.g. OpenAI / Gemini)
+        let response = try await MyAPIService.classify(context.name)
+        
+        // 2. Map to SDK InputDecision
+        return InputDecision(strategy: .native, native: .init(control: "datepicker"))
+    }
+}
+
+// Usage
+TextField("Date")
+    .contextualInput(fieldName: "birth_date", value: $date, brain: MyCustomBrain())
+```
+
 ## Advanced Usage
 
 ### Side-by-Side Debugging
