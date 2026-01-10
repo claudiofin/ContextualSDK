@@ -4,7 +4,6 @@
 
 **ContextualSDK** is an intelligent, agentic iOS framework that dynamically adapts your app's input fields using **Apple Intelligence** (with robust Regex fallbacks). It acts as an agent that understands the context of a field and renders the perfect UI for it, eliminating manual configuration.
 
-![Platform](https://img.shields.io/badge/Platform-iOS%2016.0+-lightgrey.svg)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
