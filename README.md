@@ -101,7 +101,16 @@ Add `ContextualSDK` to your project via Xcode:
 
 ContextualSDK is designed to be **agnostic**. While we provide `AppleIntelligenceBrain` and `RegexBrain` out of the box, the core architecture is completely open.
 
+### Multi-Agent Framework ("Agents as Tools") 🤖
+
+The `AppleIntelligenceBrain` is built on a powerful **Multi-Agent framework**. 
+- It treats AI agents as "Tools", allowing for hierarchical orchestration.
+- **Loop Prevention**: Built-in `MaxTurnMonitor` ensures your agents don't get stuck in infinite conversational loops.
+- **Extensible**: You can subclass `Agent` to create specialized workers (e.g., `DateParserAgent`, `SentimentAnalyzer`) and plug them into the main Brain.
+
 ### Custom Brains (Bring Your Own AI)
+
+You can easily plug in any other intelligence provider (OpenAI, Gemini, Claude, etc.) by implementing the `ContextualBrain` protocol.
 
 You can easily plug in any other intelligence provider (OpenAI, Gemini, Claude, etc.) by implementing the `ContextualBrain` protocol.
 
