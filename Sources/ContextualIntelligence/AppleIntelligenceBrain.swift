@@ -75,7 +75,7 @@ public struct AppleIntelligenceBrain: ContextualBrain, Sendable {
     public func decide(for context: FieldContext) async throws -> InputDecision {
         // 1. Check availability FIRST
         let model = SystemLanguageModel.default
-        let isAvailable = await model.availability
+        let isAvailable = model.availability
         
         var ready = false
         switch isAvailable {
@@ -98,29 +98,25 @@ public struct AppleIntelligenceBrain: ContextualBrain, Sendable {
         Return ONLY valid JSON, no markdown, no explanation.
         """
         
-        // 3. Inference
+        // 3. Inference using Agent
         Logger.brain.info("[AppleIntelligence] Sending prompt for field: \(context.name)")
         
-        // Use closure syntax for initialization as per Apple examples
-        let instructionsText = self.instructions
-        let session = LanguageModelSession {
-            instructionsText
-        }
+        // Create an Agent for this task.
+        // In the future, we can inject tools here if needed (e.g. for Regex validation).
+        let agent = Agent(name: "FieldAnalyzer", instructions: self.instructions, tools: [])
         
         do {
-            let response = try await session.respond(to: prompt)
+            // We use the agent to respond.
+            // We set a maxTurn of 2 just in case we add tools later, to prevent loops.
+            let responseText = try await agent.run(prompt: prompt, maxTurn: 2)
             
-            // 4. Parse
-            // We access the content directly. The response is expected to be a Response<String> (or similar)
-            // which has a `content` property containing the actual generated text.
-            let responseText = response.content
             Logger.brain.debug("[AppleIntelligence] Raw Response: \(responseText)")
             
             let finalDecision = try parseResponse(responseText, fieldName: context.name)
             Logger.brain.info("[AppleIntelligence] Parsed Decision: \(finalDecision.strategy.rawValue)")
             return finalDecision
         } catch {
-            Logger.brain.error("[AppleIntelligence] Session Error: \(error.localizedDescription)")
+            Logger.brain.error("[AppleIntelligence] Agent Error: \(error.localizedDescription)")
             // Fallback to keyboard on error (e.g. guardrail violation) instead of failing
             Logger.brain.notice("[AppleIntelligence] Error encountered, using safe fallback.")
             return createFallbackDecision(fieldName: context.name)

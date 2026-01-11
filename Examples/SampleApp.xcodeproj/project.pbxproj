@@ -18,6 +18,7 @@
 		5DB31A762F129E3A00803C30 /* ControlsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31A752F129E3A00803C30 /* ControlsDemoView.swift */; };
 		5DB31A7A2F12A1E700803C30 /* PowerShowcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31A792F12A1E700803C30 /* PowerShowcaseView.swift */; };
 		5DB31A7E2F12AB0700803C30 /* WebViewGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31A7D2F12AB0700803C30 /* WebViewGalleryView.swift */; };
+		5DF589772F145AD7009E83C4 /* ContextualSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5DF589762F145AD7009E83C4 /* ContextualSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF589772F145AD7009E83C4 /* ContextualSDK in Frameworks */,
 				5DB31A542F12905C00803C30 /* ContextualSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +124,7 @@
 			name = SampleApp;
 			packageProductDependencies = (
 				5DB31A532F12905C00803C30 /* ContextualSDK */,
+				5DF589762F145AD7009E83C4 /* ContextualSDK */,
 			);
 			productName = SampleApp;
 			productReference = 003 /* SampleApp.app */;
@@ -176,7 +179,7 @@
 			);
 			mainGroup = 006;
 			packageReferences = (
-				5DB31A522F12905C00803C30 /* XCLocalSwiftPackageReference "../../ContextualSDK" */,
+				5DF589752F145AD7009E83C4 /* XCLocalSwiftPackageReference "../../ContextualSDK" */,
 			);
 			productRefGroup = 008 /* Products */;
 			projectDirPath = "";
@@ -496,7 +499,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5DB31A522F12905C00803C30 /* XCLocalSwiftPackageReference "../../ContextualSDK" */ = {
+		5DF589752F145AD7009E83C4 /* XCLocalSwiftPackageReference "../../ContextualSDK" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../ContextualSDK;
 		};
@@ -504,6 +507,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		5DB31A532F12905C00803C30 /* ContextualSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ContextualSDK;
+		};
+		5DF589762F145AD7009E83C4 /* ContextualSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ContextualSDK;
 		};

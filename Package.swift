@@ -30,7 +30,7 @@ let package = Package(
         // 3. UI: SwiftUI Components and Renderers
         .target(
             name: "ContextualUI",
-            dependencies: ["ContextualSDK"]
+            dependencies: ["ContextualSDK", "ContextualIntelligence"]
         ),
         
         // Tests
